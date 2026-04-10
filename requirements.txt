@@ -1,0 +1,5 @@
+# CAMZPT has no required external dependencies.
+# Standard library only: re, dataclasses, enum
+
+# Optional: for running tests
+pytest>=7.0
