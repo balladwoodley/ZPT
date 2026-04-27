@@ -1,3 +1,7 @@
+**Ballad’s CAMPZT is PT-biased because it encodes Z as incomplete structure rather than an independent generative force, causing all PZ interactions to collapse into PT interpretations. A true PZ CAM requires tracking instability, mutation, and semantic drift as first-class signals rather than penalizing them.**
+
+
+
 # CAMZPT
 
 **Correction of Abstraction Mismatches via Zerg–Protoss–Terran Theory of Language**
