@@ -1,20 +1,25 @@
-**Ballad’s CAMPZT is PT-biased because it encodes Z as incomplete structure rather than an independent generative force, causing all PZ interactions to collapse into PT interpretations. A true PZ CAM requires tracking instability, mutation, and semantic drift as first-class signals rather than penalizing them.**
+# 🧠 CAMZPT — Correction of Abstraction Mismatches
 
+Control layer for multi-agent systems that translates high-level instructions into executable tasks.
 
+![Python](https://img.shields.io/badge/Python-3.8+-blue?logo=python&logoColor=white)
+![No ML](https://img.shields.io/badge/No-ML-brightgreen)
+![Deterministic](https://img.shields.io/badge/Deterministic-100%25-brightgreen)
+![License](https://img.shields.io/badge/License-MIT-yellow)
 
-# CAMZPT
+---
 
-**Correction of Abstraction Mismatches via Zerg–Protoss–Terran Theory of Language**
+## What It Does
 
-LLM agents fail when high-level instructions hit them undigested. "Optimise onboarding" is not a task — it's a wish. CAMZPT is a control layer that detects which abstraction level an instruction lives at, then translates it into something an agent can actually execute.
+Multi-agent systems collapse when high-level instructions hit them undigested. "Optimise onboarding" is not a task — it's a wish.
 
-No ML. No APIs. Pure linguistic heuristics and rule-based translation. Fast, auditable, deterministic.
+**CAMZPT** detects which abstraction level an instruction lives at, then translates it down into concrete, executable steps that agents can actually do.
+
+No ML. No APIs. Pure linguistic heuristics and rule-based translation. **Fast, auditable, deterministic.**
 
 ---
 
 ## The Problem
-
-Multi-agent systems collapse at the abstraction boundary:
 
 ```
 Human says:   "improve user retention"          ← high abstraction (intent)
@@ -28,73 +33,30 @@ The gap between *intent* and *action* is a translation problem. CAMZPT solves it
 
 ## The 3-Layer Model
 
-Borrowed from StarCraft strategy theory. Each race represents a mode of language:
+Borrowed from **StarCraft strategy theory**. Each layer represents a mode of language:
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│  PROTOSS  │  Abstract · Latinate · System-level intent      │
-│           │  "optimise", "facilitate", "leverage synergies" │
-├─────────────────────────────────────────────────────────────┤
-│  TERRAN   │  Concrete · Saxon · Executable steps            │
-│           │  "send email", "add button", "log the error"    │
-├─────────────────────────────────────────────────────────────┤
-│  ZERG     │  Simplified · Global · Distributable            │
-│           │  "make it easier", "fix the thing", "help user" │
-└─────────────────────────────────────────────────────────────┘
-```
+| Layer | Style | Examples |
+|-------|-------|----------|
+| **Protoss** | Abstract · Latinate · System-level intent | "optimise", "facilitate", "leverage synergies" |
+| **Terran** | Concrete · Saxon · Executable steps | "send email", "add button", "log the error" |
+| **Zerg** | Simplified · Global · Distributable | "make it easier", "fix the thing", "help user" |
 
-**Protoss** = high command. Knows the strategy. Speaks in abstractions.  
-**Terran** = ground ops. Needs specific orders. Executes one thing at a time.  
-**Zerg** = distributed swarm. Simple instructions, fast propagation.
+- **Protoss** = high command. Knows the strategy. Speaks in abstractions.
+- **Terran** = ground ops. Needs specific orders. Executes one thing at a time.
+- **Zerg** = distributed swarm. Simple instructions, fast propagation.
 
 ---
 
-## How It Works
+## Example
 
-```
-INPUT  →  detect layer  →  translate  →  route to agent
-```
+**Input:** "optimise onboarding experience"  
+**Layer Detected:** protoss
 
-### Example
-
-```
-Input:   "optimise onboarding experience"
-Layer:   protoss
-
-Output:
-  → reduce signup steps to under 3
-  → add progress indicator to form
-  → send reminder email after 24h inactivity
-  → pre-fill fields from social login
-```
-
-### More Examples
-
-```
-Input:   "facilitate cross-team collaboration"
-Layer:   protoss
-
-Output:
-  → create shared channel
-  → schedule weekly sync
-  → write shared docs
-  → assign liaison per team
-```
-
-```
-Input:   "make it easier for users"
-Layer:   zerg
-
-Output (normalised):
-  → simplify interface
-  → reduce required actions
-  → add help text
-```
-
-```
-Input:   "send a confirmation email"
-Layer:   terran  →  passes through unchanged
-```
+**Output:**
+- reduce signup steps to under 3
+- add progress indicator to form
+- send reminder email after 24h inactivity
+- pre-fill fields from social login
 
 ---
 
@@ -103,7 +65,7 @@ Layer:   terran  →  passes through unchanged
 ```
 camzpt/
 ├── layers.py       # Layer definitions + heuristic detection
-├── translator.py   # Down-translation (Protoss→Terran), up-translation
+├── translator.py   # Down-translation (Protoss→Terran)
 ├── router.py       # Routes instructions to correct pipeline
 └── __init__.py     # Public API
 
@@ -116,8 +78,8 @@ examples/
 ## Quickstart
 
 ```bash
-git clone https://github.com/yourname/camzpt
-cd camzpt
+git clone https://github.com/balladwoodley/ZPT
+cd ZPT
 pip install -r requirements.txt
 
 python examples/demo.py
@@ -145,24 +107,32 @@ print(result.tasks)    # ['reduce signup steps', 'add progress bar', ...]
 
 ## Design Principles
 
-- **No hallucination surface**: rule-based, auditable, deterministic
-- **No external dependencies**: runs anywhere Python runs  
-- **Composable**: drop it in front of any agent orchestration layer
-- **Extensible**: add your own translation maps in `translator.py`
+- **No hallucination surface** — rule-based, auditable, deterministic
+- **No external dependencies** — runs anywhere Python runs
+- **Composable** — drop it in front of any agent orchestration layer
+- **Extensible** — add your own translation maps in `translator.py`
 
 ---
 
-## What This Is Not
+## What This Is NOT
 
-Not a language model. Not a classifier trained on data. Not a wrapper around GPT.  
-It's a deterministic pre-processor that enforces abstraction hygiene before instructions reach agents.
+❌ Not a language model  
+❌ Not a classifier trained on data  
+❌ Not a wrapper around GPT
+
+✅ A deterministic pre-processor that enforces abstraction hygiene before instructions reach agents.
 
 ---
 
 ## Status
 
-Prototype. The translation maps are seeded with common patterns.  
-Extend `TRANSLATION_MAP` in `translator.py` for your domain.
+**Prototype.** Translation maps are seeded with common patterns. Extend `TRANSLATION_MAP` in `translator.py` for your domain.
+
+---
+
+## Contributing
+
+Bug reports and pull requests welcome. For major changes, open an issue first.
 
 ---
 
